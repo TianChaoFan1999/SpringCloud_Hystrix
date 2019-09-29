@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: spring-cloud-hystrix-custormer
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: 71485
+Implementation-Vendor-Id: com.tcf.cloud.demo
+Build-Jdk: 1.8.0_112
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/spring-cloud-hystrix-custormer
+Created-By: Maven Integration for Eclipse
+

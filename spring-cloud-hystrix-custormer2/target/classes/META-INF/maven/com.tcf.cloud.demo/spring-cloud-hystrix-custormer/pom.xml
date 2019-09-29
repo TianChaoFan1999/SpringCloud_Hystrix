@@ -1,0 +1,105 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.tcf.cloud.demo</groupId>
+  <artifactId>spring-cloud-hystrix-custormer</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  <!-- TODO TCF SpringBoot 2.1 基础依赖 -->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.1.8.RELEASE</version>
+		<relativePath />
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		
+		<!-- TODO TCF SpringBoot 2.1.X => Spring Cloud Greenwich SR2 -->
+		<spring-cloud.version>Greenwich.SR2</spring-cloud.version>
+		
+		<!-- TODO TCF Maven 误报版本冲突解决 -->
+        <maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
+        
+	</properties>
+
+	<!-- TODO TCF SpringBoot Starter组件 -->
+	<dependencies>
+
+		<!-- TODO TCF SpringMVC Web -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		
+		<!-- TODO TCF Eureka 客户端依赖 -->
+		<dependency>
+		   <groupId>org.springframework.cloud</groupId>
+		   <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>
+		
+		<!-- TODO TCF Feign声明式客户端负载均衡调用器 -->
+		<dependency>
+		   <groupId>org.springframework.cloud</groupId>
+		   <artifactId>spring-cloud-starter-openfeign</artifactId>
+		</dependency>
+		
+		<!-- TODO TCF Hystrix豪猪熔断器 -->
+		<dependency>
+		   <groupId>org.springframework.cloud</groupId>
+		   <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+		</dependency>
+		
+		<!-- TODO TCF Actuator手动实时刷新 -->
+		<dependency>
+           <groupId>org.springframework.boot</groupId>
+           <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+		
+		<!-- TODO TCF 公共层 -->
+		<dependency>
+		   <groupId>com.tcf.cloud.demo</groupId>
+           <artifactId>spring-cloud-common</artifactId>
+           <version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+	</dependencies>
+	
+	<!-- TODO TCF SpringCloud 核心基础依赖 -->
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	
+	<!-- TODO TCF 项目构建maven编译插件 -->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+    
+    <!-- TODO TCF 远程仓库 -->
+	<repositories>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+  
+</project>

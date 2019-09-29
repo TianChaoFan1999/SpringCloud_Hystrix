@@ -1,0 +1,47 @@
+server:
+  port: 8091
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url: 
+      
+      #设置与Eureka Server交互的地址，查询服务和注册服务都需要依赖这个地址。默认是http://localhost:8761/eureka ；多个地址可使用 , 分隔。（多server访问地址用于搭建eureka集群环境）
+      defaultZone: http://${eureka.instance.hostname}:8083/eureka/
+    
+    #表示是否将自己注册到Eureka Server，默认为true。
+    register-with-eureka: true
+    
+    #表示是否从Eureka Server获取注册信息，默认为true。
+    fetch-registry: true
+    
+#设置feign客户端超时时间
+ribbon: 
+  #指的是建立连接所用的时间，适用于网络状况正常的情况下，两端连接所用的时间。
+  ReadTimeout: 5000
+  #指的是建立连接后从服务器读取到可用资源所用的时间。 
+  ConnectTimeout: 5000
+
+#启用feign-hystrix断路器(降级和熔断)
+feign: 
+  hystrix:
+    # 熔断器启用（默认关闭）
+    enabled: true
+
+#hystrix熔断器熔断策略
+hystrix: 
+  command: 
+    default:
+      execution:
+        isolation: 
+        thread: 
+          timeoutInMilliseconds: 500 # 线程超时,调用Fallback方法
+      circuitBreaker:
+        requestVolumeThreshold: 20  # 当在配置时间窗口内达到此数量的失败后，进行短路。默认20个）
+        sleepWindowInMilliseconds: 5  # 短路多久以后开始尝试是否恢复，默认5s
+        errorThresholdPercentage: 50%  # 出错百分比阈值，当达到此阈值后，开始短路。默认50%
+    
+spring:
+  application:
+    name: feign-custormer
